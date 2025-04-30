@@ -13,4 +13,4 @@ const commonLcm = (numbers) => {
     return lcm(numbers.pop(), commonLcm(numbers));
 }
 
-console.log(commonLcm(numbers));
+console.log(n === 1 ? n : commonLcm(numbers));
