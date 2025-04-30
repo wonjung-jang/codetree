@@ -6,7 +6,7 @@ let [a, b, c] = input[0].split(" ").map(Number);
 const f = (n) => {
     if(n < 10) return n;
 
-    return f(parseInt(n / 10)) + f(n % 10);
+    return f(parseInt(n / 10)) + n % 10;
 }
 
 console.log(f(a * b * c));
