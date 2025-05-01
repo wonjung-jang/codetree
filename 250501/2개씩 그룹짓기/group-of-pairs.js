@@ -6,11 +6,9 @@ const nums = input[1].trim().split(' ').map(Number);
 
 // Please Write your code here.
 nums.sort((a, b) => a - b);
-const minGroup = [];
-const maxGroup = [];
-for(let i = 0; i < 2 * n; i++){
-    if(i % 2 === 0) minGroup.push(nums[i]);
-    else maxGroup.push(nums[i]);
+const sums = [];
+for(let i = 0; i < n; i++){
+    sums.push(nums[i] + nums[(2 * n) - (i + 1)]);
 }
 
-console.log(maxGroup.reduce((acc, cur) => acc += cur));
+console.log(Math.max(...sums));
