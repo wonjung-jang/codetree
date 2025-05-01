@@ -13,7 +13,7 @@ let result = "Yes";
 for(let i = 0; i < n; i++){
     if(a[i] !== b[i]) {
         result = "No";
-        break;
+        return;
     }
 }
 console.log(result);
