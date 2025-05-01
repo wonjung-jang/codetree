@@ -7,13 +7,17 @@ const forecasts = input.slice(1, n + 1).map(line => line.split(' '));
 // Please Write your code here.
 class Weather{
     constructor(date, day, weather){
-        this.date = date;
+        this.date = new Date(date);
         this.day = day;
         this.weather = weather;
     }
 
+    get dateData(){
+        return `${this.date.getFullYear()}-${String(this.date.getMonth() + 1).padStart(2, "0")}-${String(this.date.getDate()).padStart(2, "0")}`;
+    }
+
     get info(){
-        return `${this.date} ${this.day} ${this.weather}`;
+        return `${this.dateData} ${this.day} ${this.weather}`;
     }
 }
 
