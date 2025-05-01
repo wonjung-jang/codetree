@@ -20,6 +20,6 @@ class Weather{
 const result = forecasts.map(forecast => {
     const [date, day, weather] = forecast;
     return new Weather(date, day, weather);
-}).find(forecast => forecast.weather === "Rain").info;
+}).sort((a, b) => a.date - b.date).find(forecast => forecast.weather === "Rain").info;
 
 console.log(result);
