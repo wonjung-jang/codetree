@@ -11,6 +11,8 @@ for (let i = 0; i < 5; i++) {
 
 const printStudentInfp = (student) => console.log(`${student.name} ${student.height} ${student.weight}`)
 
+students = students.map(student => ({ height: Math.floor(student.height * 10) / 10, ...student }))
+
 // Please Write your code here.
 console.log("name");
 students.sort((a, b) => a.name.localeCompare(b.name)).map(printStudentInfp);
