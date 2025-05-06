@@ -4,8 +4,8 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 const students = [];
 for (let i = 0; i < 5; i++) {
   const [name, heightStr, weightStr] = input[i].split(' ');
-  const height = Math.floor(Number(heightStr) * 10) / 10;
-  const weight = Number(weightStr);
+  const height = Number(heightStr);
+  const weight = Number(weightStr).toFixed(1);
   students.push({ name, height, weight });
 }
 
