@@ -4,14 +4,12 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 const students = [];
 for (let i = 0; i < 5; i++) {
   const [name, heightStr, weightStr] = input[i].split(' ');
-  const height = Number(heightStr);
+  const height = Math.floor(Number(heightStr) * 10) / 10;
   const weight = Number(weightStr);
   students.push({ name, height, weight });
 }
 
 const printStudentInfp = (student) => console.log(`${student.name} ${student.height} ${student.weight}`)
-
-students = students.map(student => ({ height: Math.floor(student.height * 10) / 10, ...student }))
 
 // Please Write your code here.
 console.log("name");
