@@ -8,4 +8,6 @@ const sumMin = (date, hour, min) => {
     return (date * 24 * 60) + (hour * 60) + min;
 }
 
-console.log(sumMin(A - 11, B - 11, C - 11));
+const diff = sumMin(A - 11, B - 11, C - 11);
+
+console.log(diff > 0 ? diff : -1);
