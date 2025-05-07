@@ -11,5 +11,5 @@ const calcTotalDate = (month, date) => {
     return sum - d;
 }
 
-const diff = calcTotalDate(m2, d2) - calcTotalDate(m1, d1);
+const diff = (calcTotalDate(m2, d2) - calcTotalDate(m1, d1)) % 7;
 console.log(day[1 + diff]);
