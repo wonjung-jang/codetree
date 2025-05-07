@@ -10,4 +10,4 @@ const sumMin = (date, hour, min) => {
 
 const diff = sumMin(A - 11, B - 11, C - 11);
 
-console.log(diff > 0 ? diff : -1);
+console.log(diff >= 0 ? diff : -1);
