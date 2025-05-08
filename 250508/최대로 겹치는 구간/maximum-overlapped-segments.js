@@ -9,13 +9,13 @@ for (let i = 1; i <= n; i++) {
 
 // Please write your code here.
 const offset = 100;
-const sunboon = Array.from({length: 201}, () => 0);
+const section = Array.from({length: 200}, () => 0);
 for(segment of segments){
     let [start, end] = segment;
-    while(start <= end){
-        sunboon[start + offset]++
+    while(start < end){
+        section[start + offset]++;
         start++;
     }
 }
 
-console.log(Math.max(...sunboon));
+console.log(Math.max(...section));
