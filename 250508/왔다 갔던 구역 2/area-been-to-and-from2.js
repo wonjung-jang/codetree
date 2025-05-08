@@ -5,21 +5,38 @@ const n = Number(input[0]);
 const commands = input.slice(1, n + 1);
 
 // Please Write your code here.
-const section = {};
+const segements = [];
 
-let position = 0;
+const offset = 1000;
+
+let start = 0;
+let end = 0;
 for(let i = 0; i < n; i++){
     let [num, direct] = commands[i].split(" ");
     num = Number(num);
-    while(num > 0){
-        num--;
-        position = direct === "R" ? position + 1 : position - 1;
-        if(!section[position]){
-            section[position] = 1;
-            continue;
-        }
-        section[position]++;
+
+    if(direct === "R"){
+        start = end;
+        end += num;
+    }
+
+    if(direct === "L"){
+        end = start;
+        start = end - num;
+    }
+
+    segements.push([start, end]);
+}
+
+const section = Array.from({length: 2000}, () => 0);
+
+for(let i = 0; i < segements.length; i++){
+    let [start, end] = segements[i];
+
+    while(start < end){
+        section[start + offset]++;
+        start++;
     }
 }
-// Object.entries(section).forEach(([key, value]) =>console.log(key, value));
-console.log(Object.values(section).filter(num => num >= 2).length);
+
+console.log(section.filter(n => n >= 2).length);
