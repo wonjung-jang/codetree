@@ -6,29 +6,25 @@ const commands = input.slice(1).map(line => line.split(' '));
 
 // Please Write your code here.
 const tileMap = {};
-const result = [];
 
-let endPoint = 0;
+let current = 0;
 for(let i = 0; i < n; i++){
     let [num, direct] = commands[i];
     num = Number(num);
-    const startPoint = endPoint;
-    let color = "";
-    if(direct === "R") {
-        endPoint += num;
-        color = "B";
-    }
-    if(direct === "L"){
-        endPoint -= num;
-        color = "W"
-    }
+    while(num > 0){
+        if(!tileMap[current]) tileMap[current] = [];
 
-    let [start, end] = [startPoint, endPoint].sort((a, b) => a - b);
+        if(direct === "R"){
+            tileMap[current].push("B");
+            if(num !== 1) current++;
+        }
 
-    while(start < end){
-        if(!tileMap[start]) tileMap[start] = [];
-        tileMap[start].push(color);
-        start++;
+        if(direct === "L"){
+            tileMap[current].push("W");
+            if(num !== 1) current--;
+        }
+        
+        num--;
     }
 }
 
