@@ -14,18 +14,17 @@ let end = 0;
 for(let i = 0; i < n; i++){
     let [num, direct] = commands[i].split(" ");
     num = Number(num);
+    start = end;
 
     if(direct === "R"){
-        start = end;
         end += num;
     }
 
     if(direct === "L"){
-        end = start;
-        start = end - num;
+        end -= num;
     }
 
-    segements.push([start, end]);
+    segements.push([start, end].sort((a, b) => a - b));
 }
 
 const section = Array.from({length: 2000}, () => 0);
