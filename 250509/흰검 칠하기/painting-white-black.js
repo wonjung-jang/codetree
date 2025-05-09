@@ -28,17 +28,20 @@ for(let i = 0; i < n; i++){
     }
 }
 
-let bCnt = 0;
 let wCnt = 0;
+let bCnt = 0;
 let gCnt = 0;
 Object.values(tileMap).forEach(tile => {
     if(tile.length >= 4) {
-        return gCnt++;
+        const colorCnt = { B: 0, W: 0 }
+        tile.forEach(color => colorCnt[color]++);
+        if(colorCnt.W >= 2 && colorCnt.B >= 2) return gCnt++;
     }
 
     const color = tile.pop();
-    if(color === "B") return bCnt++;
+
     if(color === "W") return wCnt++;
+    if(color === "B") return bCnt++;
 });
 
 console.log(wCnt, bCnt, gCnt);
