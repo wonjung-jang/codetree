@@ -4,9 +4,10 @@ const input = fs.readFileSync(0).toString().trim().split('\n');
 const n = Number(input[0]);
 const arr = input.slice(1, n + 1).map(Number);
 
+if(arr.length === 1) return console.log(1)
 // Please Write your code here.
 const idxs = [];
-arr.forEach((num, idx) => {
+arr.forEach((_, idx) => {
     if(idx === 0 || arr[idx] !== arr[idx - 1]){
         idxs.push(idx);
     }
