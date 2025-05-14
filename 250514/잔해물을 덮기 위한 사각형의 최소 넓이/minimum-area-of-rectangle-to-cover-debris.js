@@ -40,4 +40,4 @@ for(let i = 0; i < 2000; i++){
 const row = maxY - minY;
 const col = maxX - minX;
 
-console.log(row * col);
+console.log(minY === Infinity ? 0 : row * col);
