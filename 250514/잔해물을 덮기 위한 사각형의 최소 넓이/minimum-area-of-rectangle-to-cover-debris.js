@@ -9,18 +9,35 @@ const offset = 1000;
 const arr = Array.from({length: 2000}, () => Array.from({length: 2000}, () => 0));
 
 const [startX, startY, endX, endY] = rect1;
-for(let i = startX; i < endX; i++){
-    for(let j = startY; j < endY; j++){
+for(let i = startY; i <= endY; i++){
+    for(let j = startX; j <= endX; j++){
         const [minX, minY, maxX, maxY] = rect2;
 
-        if(i >= minX && i < maxX && j >= minY && j < maxY) continue;
-        arr[i + offset][j + offset] = 1;
+        if(i >= minY && i <= maxY && j >= minX && j <= maxX) continue;
+        arr[j + offset][i + offset] = 1;
     }
 }
 
-const a = arr.filter(array => array.includes(1));
-const col = a.length;
-const row = Math.max(...a.map(arr => arr.filter(num => num === 1).length));
+let minX = Infinity;
+let maxX = -Infinity;
+let minY = Infinity;
+let maxY = -Infinity;
 
+for(let i = 0; i < 2000; i++){
+    const array = arr[i];
+    if(!array.includes(1)) continue;
+
+    if(i < minY) minY = i;
+    if(i > maxY) maxY = i;
+
+    const firstIdx = array.indexOf(1);
+    const lastIdx = array.lastIndexOf(1);
+
+    if(minX > firstIdx) minX = firstIdx
+    if(maxX < lastIdx) maxX = lastIdx;
+}
+
+const row = maxY - minY;
+const col = maxX - minX;
 
 console.log(row * col);
